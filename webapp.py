@@ -22,8 +22,8 @@ def get_most_performed(year):
     with open('broadway.json') as broadway_data:
         weeks = json.load(broadway_data)
     #create a dictionary of shows and number of performances in the specified year
-    performances = {}
-    """for w in weeks:
+    """performances = {}
+    for w in weeks:
         if w["Date"]["Year"] == year:
             if w["Show"]["Name"] in performances:
                 performances[w["Show"]["Name"]] = performances[w["Show"]["Name"]] + w["Statistics"]["Performances"]
@@ -36,7 +36,7 @@ def get_most_performed(year):
         if p > perfs:
             name = s
             perfs = p"""
-    return [name, perfs]
+    return [name, str(perfs)]
 
 def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
