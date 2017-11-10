@@ -19,23 +19,6 @@ def render_popularity():
 
 def get_most_performed(year):
      """Returns a list of the name and number of performances of the show that was performed most in the specified year."""
-    """with open('broadway.json') as broadway_data:
-        weeks = json.load(broadway_data)
-    #create a dictionary of shows and number of performances in the specified year
-    performances = {}
-    for w in weeks:
-        if w["Date"]["Year"] == year:
-            if w["Show"]["Name"] in performances:
-                performances[w["Show"]["Name"]] = performances[w["Show"]["Name"]] + w["Statistics"]["Performances"]
-            else:
-                performances[w["Show"]["Name"]] = w["Statistics"]["Performances"]
-    #search the dictionary for the show with the most performances
-    name = ""
-    perfs = 0
-    for s,p in performances:
-        if p > perfs:
-            name = s
-            perfs = p"""
     return ["opera", "90"]
 
 def get_year_options():
