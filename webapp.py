@@ -9,11 +9,11 @@ app = Flask(__name__)
 def render_about():
     return render_template('about.html')
 
-@app.route('/popularity')
+"""@app.route('/popularity')
 def render_popularity():
-    return render_template('popularity.html', options="")
+    return render_template('popularity.html')
     
-"""def get_year_options():
+def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
     with open('broadway.json') as braodway_data:
         weeks = json.load(broadway_data)
