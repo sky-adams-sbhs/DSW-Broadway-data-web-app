@@ -18,7 +18,7 @@ def render_popularity():
     return render_template('popularity.html', options=get_year_options())
 
 def get_most_performed(year):
-     """Returns a list of the name and number of performances of the show that was performed most in the specified year."""
+    """Returns a list of the name and number of performances of the show that was performed most in the specified year."""
     return ["opera", "90"]
 
 def get_year_options():
