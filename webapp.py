@@ -13,9 +13,9 @@ def render_about():
 def render_popularity():
     return render_template('popularity.html')
 
-"""def get_year_options():
+def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
-    with open('broadway.json') as braodway_data:
+    """with open('broadway.json') as braodway_data:
         weeks = json.load(broadway_data)
     years = []
     options = ""
@@ -25,6 +25,7 @@ def render_popularity():
             years.append(year)
             options += Markup("<option value=\"" + year + "\">" + year + "</option>")
     return options"""
+    return ""
  
 def is_localhost():
     """ Determines if app is running on localhost or not
