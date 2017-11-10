@@ -24,7 +24,7 @@ def get_most_performed(year):
     #create a dictionary of shows and number of performances in the specified year
     performances = {}
     for w in weeks:
-        if w["Date"]["Year"] == year:
+        if str(w["Date"]["Year"]) == year:
             if w["Show"]["Name"] in performances:
                 performances[w["Show"]["Name"]] = performances[w["Show"]["Name"]] + w["Statistics"]["Performances"]
             else:
