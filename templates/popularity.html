@@ -1,0 +1,14 @@
+{% block title %}Popularity{% endblock %}
+
+{% block heading %}Popularity of Shows and Theatres{% endblock %}
+
+{% block body %}
+<h2>Select a year</h2>
+<form action="/popularity">
+  <select name="year">
+    {{ options }}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+{% endblock %}
