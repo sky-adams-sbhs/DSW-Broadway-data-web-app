@@ -28,15 +28,15 @@ def get_most_performed(year):
             if w["Show"]["Name"] in performances:
                 performances[w["Show"]["Name"]] = performances[w["Show"]["Name"]] + w["Statistics"]["Performances"]
             else:
-                performances[w["Show"]["Name"]] = w["Statistics"]["Performances"]"""
+                performances[w["Show"]["Name"]] = w["Statistics"]["Performances"]
     #search the dictionary for the show with the most performances
     name = ""
     perfs = 0
-    """for s,p in performances:
+    for s,p in performances:
         if p > perfs:
             name = s
             perfs = p"""
-    return [name, str(perfs)]
+    return ["opera", "90"]
 
 def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
