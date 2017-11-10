@@ -34,7 +34,7 @@ def get_most_performed(year):
     perfs = 0
     num = 0
     for s,p in performances.items():
-        if p = perfs:
+        if p == perfs:
             num += 1
         if p > perfs:
             name = s
