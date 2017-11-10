@@ -32,11 +32,15 @@ def get_most_performed(year):
     #search the dictionary for the show with the most performances
     name = ""
     perfs = 0
+    num = 0
     for s,p in performances.items():
+        if p = perfs:
+            num += 1
         if p > perfs:
             name = s
             perfs = p
-    return [name, str(perfs)]
+            num = 1
+    return [name, str(num)]
 
 def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
