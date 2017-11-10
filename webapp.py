@@ -23,7 +23,7 @@ def get_year_options():
         year = w["Date"]["Year"]
         if (year not in years) and not (year == 1990 or year == 2016):
             years.append(year)
-            options += Markup("<option value=\"" + year + "\">" + year + "</option>")
+            options += Markup("<option value=\"" + str(year) + "\">" + str(year) + "</option>")
     return options
  
 def is_localhost():
