@@ -8,6 +8,10 @@ app = Flask(__name__)
 @app.route('/')
 def render_about():
     return render_template('about.html')
+
+@app.route('/popularity')
+def render_popularity():
+    return render_template('popularity.html')
  
 def is_localhost():
     """ Determines if app is running on localhost or not
