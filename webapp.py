@@ -11,13 +11,13 @@ def render_about():
 
 @app.route('/popularity')
 def render_popularity():
-    return render_template('popularity.html')
+    return render_template('popularity.html', options=get_year_options())
 
 def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
-    """with open('broadway.json') as braodway_data:
+    with open('broadway.json') as braodway_data:
         weeks = json.load(broadway_data)
-    years = []
+    """years = []
     options = ""
     for w in weeks:
         year = w["Date"]["Year"]
