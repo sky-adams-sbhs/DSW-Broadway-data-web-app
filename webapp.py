@@ -11,6 +11,8 @@ def render_about():
 
 @app.route('/popularity')
 def render_popularity():
+    if 'year' in request.args:
+        return render_template('popularitydisplay.html', options=get_year_options())
     return render_template('popularity.html', options=get_year_options())
 
 def get_year_options():
