@@ -13,8 +13,12 @@ def render_about():
 def render_popularity():
     if 'year' in request.args:
         year = request.args['year']
-        return render_template('popularitydisplay.html', options=get_year_options(), year=year)
+        mostPerformed = get_most_performed(year)
+        return render_template('popularitydisplay.html', options=get_year_options(), year=year, mostPerformed=mostPerformed[0], performances=mostPerformed[1])
     return render_template('popularity.html', options=get_year_options())
+
+def get_most_performed(year):
+    return ["opera", "20"]
 
 def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
