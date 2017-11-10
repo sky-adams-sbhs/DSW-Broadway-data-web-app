@@ -32,7 +32,7 @@ def get_most_performed(year):
     #search the dictionary for the show with the most performances
     name = ""
     perfs = 0
-    for s,p in performances:
+    for s,p in performances.items():
         if p > perfs:
             name = s
             perfs = p
