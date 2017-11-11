@@ -45,7 +45,7 @@ def get_most_performed(year):
             shows = shows + names[i] + ", "
         shows = shows + "and " + shows[-1] + " were"
     elif len(names) == 2:
-        shows = shows[0] + " and " + "shows[1]" + " were"
+        shows = shows[0] + " and " + shows[1] + " were"
     else:
         shows = names[0] + " was"
     return [shows, str(perfs)]
