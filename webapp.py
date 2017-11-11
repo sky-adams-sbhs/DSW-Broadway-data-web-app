@@ -19,7 +19,8 @@ def render_popularity():
                                performances=mostPerformed[1], tickets=mostAttended[1], mostAttended=mostAttended[0])
     return render_template('popularity.html', options=get_year_options())
 
-def get_show_dict(year, statsKey):
+def get_show_and_max_val(year, statsKey):
+    """Returns a list of the name(s) of the shows(s) with the max total value for the year of the specified statsKey"""
     with open('broadway.json') as broadway_data:
         weeks = json.load(broadway_data)
     #create a dictionary of shows and totals of the specified statsKey for the specified year
@@ -30,23 +31,24 @@ def get_show_dict(year, statsKey):
                 shows[w["Show"]["Name"]] = shows[w["Show"]["Name"]] + w["Statistics"][statsKey]
             else:
                 shows[w["Show"]["Name"]] = w["Statistics"][statsKey]
-    return shows
+    #search the dictionary for the show with the highest value
+    names = []
+    val = 0
+    for s,v in shows.items():
+        if v == val:
+            names.append(s)
+        if v > val:
+            names = [s]
+            val = v
+    return [names,val]
 
 def get_most_attended(year):
     """Returns a list of the name(s) and number of tickets sold of the show(s) that sold the most tickets the specified year."""
     with open('broadway.json') as broadway_data:
         weeks = json.load(broadway_data)
-    #create a dictionary of shows and number of tickets sold in the specified year
-    tickets = get_show_dict(year, "Attendance")
-    #search the dictionary for the show with the most performances
-    names = []
-    tics = 0
-    for s,t in tickets.items():
-        if t == tics:
-            names.append(s)
-        if t > tics:
-            names = [s]
-            tics = t
+    result = get_show_and_max_val(year, "Attendance")
+    names = result[0]
+    tics = result[1]
     #format the names of the most attended shows
     shows = ""
     if len(names) > 2:
@@ -63,23 +65,9 @@ def get_most_performed(year):
     """Returns a list of the name(s) and number of performances of the show(s) that was performed most in the specified year."""
     with open('broadway.json') as broadway_data:
         weeks = json.load(broadway_data)
-    #create a dictionary of shows and number of performances in the specified year
-    performances = {}
-    for w in weeks:
-        if str(w["Date"]["Year"]) == year:
-            if w["Show"]["Name"] in performances:
-                performances[w["Show"]["Name"]] = performances[w["Show"]["Name"]] + w["Statistics"]["Performances"]
-            else:
-                performances[w["Show"]["Name"]] = w["Statistics"]["Performances"]
-    #search the dictionary for the show with the most performances
-    names = []
-    perfs = 0
-    for s,p in performances.items():
-        if p == perfs:
-            names.append(s)
-        if p > perfs:
-            names = [s]
-            perfs = p
+    result = get_show_and_max_val(year, "Performances")
+    names = result[0]
+    perfs = result[1]
     #format the names of the most performed shows
     shows = ""
     if len(names) > 2:
