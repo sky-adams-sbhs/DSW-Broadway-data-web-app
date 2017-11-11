@@ -41,14 +41,14 @@ def get_most_performed(year):
     #format the names of the most performed shows
     shows = ""
     if len(names) > 2:
-        for i in range(0,len(names)-2):
+        for i in range(0,len(names)-1):
             shows = shows + names[i] + ", "
-        shows = shows + "and " + names[len(names)-1] + " were"
+        shows = shows + "and " + names[-1] + " were"
     elif len(names) == 2:
         shows = names[0] + " and " + names[1] + " were"
     else:
         shows = names[0] + " was"
-    return [shows, str(len(names))]
+    return [shows, str(perfs)]
 
 def get_year_options():
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
