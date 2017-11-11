@@ -19,8 +19,45 @@ def render_popularity():
                                performances=mostPerformed[1], tickets=mostAttended[1], mostAttended=mostAttended[0])
     return render_template('popularity.html', options=get_year_options())
 
+def get_show_dict(year, statsKey):
+    with open('broadway.json') as broadway_data:
+        weeks = json.load(broadway_data)
+    #create a dictionary of shows and totals of the specified statsKey for the specified year
+    shows = {}
+    for w in weeks:
+        if str(w["Date"]["Year"]) == year:
+            if w["Show"]["Name"] in shows:
+                shows[w["Show"]["Name"]] = shows[w["Show"]["Name"]] + w["Statistics"][statsKey]
+            else:
+                shows[w["Show"]["Name"]] = w["Statistics"][statsKey]
+    return shows
+
 def get_most_attended(year):
-    return ["opera", "20"]
+    """Returns a list of the name(s) and number of tickets sold of the show(s) that sold the most tickets the specified year."""
+    with open('broadway.json') as broadway_data:
+        weeks = json.load(broadway_data)
+    #create a dictionary of shows and number of tickets sold in the specified year
+    tickets = get_show_dict(year, "Attendance")
+    #search the dictionary for the show with the most performances
+    names = []
+    tics = 0
+    for s,t in tickets.items():
+        if t == tics:
+            names.append(s)
+        if t > tics:
+            names = [s]
+            tics = t
+    #format the names of the most attended shows
+    shows = ""
+    if len(names) > 2:
+        for i in range(0,len(names)-1):
+            shows = shows + names[i] + ", "
+        shows = shows + "and " + names[-1]
+    elif len(names) == 2:
+        shows = names[0] + " and " + names[1]
+    else:
+        shows = names[0]
+    return [shows, str(tics)]
 
 def get_most_performed(year):
     """Returns a list of the name(s) and number of performances of the show(s) that was performed most in the specified year."""
