@@ -14,8 +14,13 @@ def render_popularity():
     if 'year' in request.args:
         year = request.args['year']
         mostPerformed = get_most_performed(year)
-        return render_template('popularitydisplay.html', options=get_year_options(), year=year, mostPerformed=mostPerformed[0], performances=mostPerformed[1])
+        mostAttended = get_most_attended(year)
+        return render_template('popularitydisplay.html', options=get_year_options(), year=year, mostPerformed=mostPerformed[0], 
+                               performances=mostPerformed[1], tickets=mostAttended[1], mostAttended=mostAttended[0])
     return render_template('popularity.html', options=get_year_options())
+
+def get_most_attended(year):
+    return ["opera", "20"]
 
 def get_most_performed(year):
     """Returns a list of the name(s) and number of performances of the show(s) that was performed most in the specified year."""
