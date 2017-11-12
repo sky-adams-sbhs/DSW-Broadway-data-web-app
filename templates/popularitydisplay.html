@@ -9,4 +9,6 @@
 <p>Highest Gross: {{ highestGross }} grossed ${{ gross }}.</p>
 
 <h3>Most popular theatres in {{ year }}</h3>
+<p>Most Performances: {{ theatreMostPerformed }} hosted {{ mostPerformances }} performances{{ each_performances }}.</p>
+<p>Most Attended: {{ theatreMostAttended }} sold {{ theatreTickets }} tickets{{each_attended}}.</p>
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% set active_page = "spending" %}
+
+{% block title %}Spending{% endblock %}
+
+{% block heading %}Spending on Broadway Shows{% endblock %}
+
+{% block body %}
+    <script src="{{url_for('static',filename='canvasChart.js')}}" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var dataDef = { title: "Total Annual Gross of all Broadway Shows",
+                            xLabel: 'Year', 
+                            yLabel: 'Gross of all Broadway Shows (millions)',
+                            labelFont: '19pt Arial', 
+                            dataPointFont: '10pt Arial',
+                            renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
+                            dataPoints: {{ dataPoints }}
+                           };
+            CanvasChart.render('canvas', dataDef);
+        });
+
+    </script>
+	<div style="margin-left:50px;margin-top:50px;">
+	<canvas id="canvas" width="1000" height="600"></canvas>
+	</div>
+{% endblock %}

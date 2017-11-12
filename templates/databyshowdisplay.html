@@ -1,0 +1,12 @@
+{% extends "databyshow.html" %}
+
+{% block body %}
+{{ super() }}
+
+<h2>{{ show }}</h2>
+<p>Approximate running dates: {{ startDate }} to {{ endDate }}</p>
+<p>Total Performances: {{ performances }}</p>
+<p>Total Attendance: {{ attendance }}</p>
+<p>Total Gross: ${{ gross }}</p>
+<p>*Data from before mid-1990 or after mid-2016 is not available.</p>
+{% endblock %}

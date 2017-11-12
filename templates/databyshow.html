@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% set active_page = "databyshow" %}
+
+{% block title %}Data by Show{% endblock %}
+
+{% block heading %}Data by Show{% endblock %}
+
+{% block body %}
+<h2>Select a show</h2>
+<form action="/databyshow">
+  <select name="show">
+    {{ options }}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+{% endblock %}
