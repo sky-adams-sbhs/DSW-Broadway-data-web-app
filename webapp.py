@@ -74,7 +74,7 @@ def get_show_totals(data, show):
             perfs = perfs + w["Statistics"]["Performances"]
             attendance = attendance + w["Statistics"]["Attendance"]
             gross = gross + w["Statistics"]["Gross"]
-    return [f"{perfs:,d}", f"{attendance:,d}", f"{gross:,d}"]
+    return [format(perfs, ',d'), format(attendance,',d'), format(gross,',d')]
     
 def get_running_dates(data, show):
     startDate = datetime.strptime("12/31/2016", '%m/%d/%Y')
@@ -96,7 +96,7 @@ def most_popular_theatre(data, year, statsKey):
     if len(names) > 1:
         each = " each"
     theatres = list_to_string(names)
-    return [theatres, f"{perfs:,d}", each]
+    return [theatres, format(perfs,',d'), each]
  
 def list_to_string(words):
     """Returns a string in the format 'words[0], words[1], ..., and words[-1]', 'words[0] and words[1]' for lists with only 2 items, and 'words[0]' for lists with only 1 item."""
@@ -140,7 +140,7 @@ def show_with_highest_gross(data, year):
     gross = result[1]
     #format the names of the most attended shows
     shows = list_to_string(names)
-    return [shows, f"{gross:,d}"]
+    return [shows, format(gross,',d')]
     
 def show_most_attended(data, year):
     """Returns a list of the name(s) and number of tickets sold of the show(s) that sold the most tickets the specified year."""
@@ -149,7 +149,7 @@ def show_most_attended(data, year):
     tics = result[1]
     #format the names of the most attended shows
     shows = list_to_string(names)
-    return [shows, f"{tics:,d}"]
+    return [shows, format(tics,',d')]
 
 def show_most_performed(data, year):
     """Returns a list of the name(s) and number of performances of the show(s) that was performed most in the specified year."""
@@ -162,7 +162,7 @@ def show_most_performed(data, year):
         shows = shows + " were"
     else:
         shows = shows + " was"
-    return [shows, f"{perfs:,d}"]
+    return [shows, format(perfs,',d')]
 
 def get_year_options(weeks):
     """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
