@@ -198,4 +198,4 @@ def is_localhost():
 
 
 if __name__ == '__main__':
-    app.run(debug=True) # change to False when running in production
+    app.run(debug=False) # change to False when running in production
