@@ -1,4 +1,5 @@
-from flask import Flask, request, Markup, render_template, flash
+from flask import Flask, request, render_template, flash
+from markupsafe import Markup
 from datetime import datetime
 
 import os
