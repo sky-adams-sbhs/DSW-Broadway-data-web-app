@@ -135,7 +135,6 @@ def get_show_and_max_val(data, year, showKey, statsKey):
 
 def show_with_highest_gross(data, year):
     """Returns a list of the name(s) and total annual gross of the show(s) that grossed the most money in the specified year."""
-    """Returns a list of the name(s) and number of tickets sold of the show(s) that sold the most tickets the specified year."""
     result = get_show_and_max_val(data, year, "Name", "Gross")
     names = result[0]
     gross = result[1]
