@@ -17,7 +17,7 @@
                             labelFont: '19pt Arial', 
                             dataPointFont: '10pt Arial',
                             renderTypes: [CanvasChart.renderType.lines, CanvasChart.renderType.points],
-                            dataPoints: {{ dataPoints }}
+                            dataPoints: {{ dataPoints | safe}}
                            };
             CanvasChart.render('canvas', dataDef);
         });

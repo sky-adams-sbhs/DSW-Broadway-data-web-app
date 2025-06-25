@@ -58,13 +58,12 @@ def total_annual_grosses(weeks):
             years[year] = w["Statistics"]["Gross"]
     del years[1990]
     del years[2016]
-    #create a properly formatted string to use in the jQuery code
-    code = "["
+    #create a list of dictionaries to use in the jQuery code
+    datapoints = []
+    #code = "["
     for year, gross in years.items():
-        code = code + Markup("{ x: '" + str(year) + "', y: " + str(gross/1000000) + " },")
-    code = code[:-1] #remove the last comma
-    code = code + "]"
-    return code
+        datapoints.append({"x":year, "y":gross/1000000})
+    return datapoints
     
 def get_show_totals(data, show):
     perfs = 0
